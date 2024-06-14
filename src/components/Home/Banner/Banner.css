@@ -1,0 +1,73 @@
+.container_banner {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+.slider-container {
+  width: 100%;
+  position: relative;
+}
+
+.slick-track {
+  display: flex;
+}
+
+.slide {
+  width: 100%;
+  height: auto;
+  max-height: 720px;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  object-fit: cover;
+}
+
+.slide img {
+  max-width: 100%;
+  object-fit: cover !important;
+}
+
+.custom-prev,
+.custom-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  width: 80px;
+  height: 120px;
+  background-color: rgba(0, 0, 0, 0.233);
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.custom-arrow svg {
+  font-size: 60px;
+  color: var(--primary);
+}
+
+
+/* Estilo para la flecha izquierda */
+.custom-prev {
+  left: 10px; /* Posiciona a la izquierda */
+}
+
+/* Estilo para la flecha derecha */
+.custom-next {
+  right: 10px; /* Posiciona a la derecha */
+}
+
+.custom-prev:hover,
+.custom-next:hover{
+    background: #afac0383;
+}
+
+.custom-prev:hover svg,
+.custom-next:hover svg{
+    color: var(--white);
+}

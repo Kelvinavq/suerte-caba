@@ -1,0 +1,42 @@
+.container_admin .inner_grid.banner {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 20px 0;
+}
+
+.container_admin .inner_grid.banner .banner-image {
+  position: relative;
+}
+
+.container_admin .inner_grid.banner img {
+  border-radius: 10px;
+  max-width: 200px;
+  object-fit: cover;
+}
+
+.container_admin .inner_grid.banner button {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  right: 0;
+  background: var(--danger);
+  color: var(--white);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+@media (max-width: 720px) {
+  .container_admin .inner_grid.banner {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    max-height: 400px;
+    justify-content: center;
+    overflow-y: auto;
+    padding: 20px 0;
+  }
+}

@@ -1,0 +1,10 @@
+.container_admin .inner_admin .left .buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: start;
+    transition: all .3s;
+    align-items: center;
+  }
+
+  .container_admin .left .inner_grid{transition: all .3s;}

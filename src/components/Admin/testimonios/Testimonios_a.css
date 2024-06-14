@@ -1,0 +1,75 @@
+.inner_admin_testimonios {
+  width: 95%;
+  height: auto;
+  padding-bottom: 150px;
+}
+
+.inner_admin_testimonios .title {
+  text-align: center;
+}
+
+.inner_admin_testimonios .title h2 {
+  font-size: 2em;
+  font-weight: 500;
+  color: var(--white);
+}
+
+.inner_admin_testimonios .tabla td p {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.inner_admin_testimonios .tabla td.activo span{
+    background: var(--primary);
+    padding: 10px 15px;
+    border-radius: 15px;
+}
+
+.inner_admin_testimonios .tabla td.inactivo span{
+    background: var(--danger);
+    padding: 10px 15px;
+    border-radius: 15px;
+}
+
+.inner_admin_testimonios .tabla td button{
+    background: none;
+    color: var(--white);
+    border: none;
+    cursor: pointer;
+    font-size: 1.4em;
+}
+
+.drop{
+  position: relative;
+  overflow: visible !important;
+}
+
+
+/* Estilo para el dropdown */
+.dropdown {
+  width: 200px;
+  right:  200px;
+  position: absolute;
+  border-radius: 20px;
+  padding: 10px;
+  background-color: var(--dark);
+  box-shadow: 0 4px 8px rgba(209, 212, 8, 0.1);
+  z-index: 1000;
+}
+
+.dropdown button {
+  width: 100% !important;
+  height: 45px !important;
+  padding: 8px 16px;
+  background:red;
+  cursor: pointer;
+  display: block;
+  margin: 12px 0;
+}
+
+.dropdown button:hover{
+  background: var(--primary) !important;
+  color: var(--dark) !important;
+}
