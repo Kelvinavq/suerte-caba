@@ -7,14 +7,15 @@
     RewriteRule . /dist/index.html [L]
   </IfModule>
   
-  AddType application/javascript js
-  AddType text/css css
+  # Asegúrate de que los archivos JavaScript sean servidos con el MIME type correcto
+  AddType application/javascript .js
+  AddType text/css .css
   
   <FilesMatch "\.js$">
-      AddType application/javascript js
+      AddType application/javascript .js
   </FilesMatch>
   
   <FilesMatch "\.css$">
-      AddType text/css css
+      AddType text/css .css
   </FilesMatch>
   
