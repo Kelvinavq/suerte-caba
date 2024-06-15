@@ -2,15 +2,15 @@
 
 function obtenerConexion()
 {
-    $host = 'localhost';
-    $dbname = 'suertecaba';
-    $username = 'root';
-    $password = '';
-
     // $host = 'localhost';
-    // $dbname = 'c2301988_system';
-    // $username = 'c2301988_system';
-    // $password = '79meNAgubo';
+    // $dbname = 'suertecaba';
+    // $username = 'root';
+    // $password = '';
+
+    $host = 'localhost';
+    $dbname = 'u211881118_suertecaba';
+    $username = 'u211881118_suertecaba';
+    $password = '#1kVB=?+p';
 
 
     try {
