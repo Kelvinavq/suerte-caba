@@ -7,13 +7,22 @@
     RewriteRule . /dist/index.html [L]
   </IfModule>
   
-  # Asegúrate de que los archivos JavaScript sean servidos con el MIME type correcto
   <IfModule mod_mime.c>
       AddType application/javascript .js
       AddType text/css .css
   </IfModule>
   
   <FilesMatch "\.js$">
+      SetHandler application/x-httpd-php
       AddType application/javascript .js
   </FilesMatch>
+  
+  <FilesMatch "\.css$">
+      AddType text/css .css
+  </FilesMatch>
+  
+  # Deshabilita la compresión para los archivos JavaScript para evitar problemas MIME
+  <IfModule mod_deflate.c>
+      SetEnvIfNoCase Request_URI \.js$ no-gzip dont-vary
+  </IfModule>
   
