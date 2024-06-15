@@ -1,10 +1,19 @@
-
 <IfModule mod_rewrite.c>
-  RewriteEngine On
-  RewriteBase /
-  RewriteRule ^index\.html$ - [L]
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule . /dist/index.html [L]
-</IfModule>
-
+    RewriteEngine On
+    RewriteBase /
+    RewriteRule ^index\.html$ - [L]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule . /dist/index.html [L]
+  </IfModule>
+  
+  # Asegúrate de que los archivos JavaScript sean servidos con el MIME type correcto
+  <IfModule mod_mime.c>
+      AddType application/javascript .js
+      AddType text/css .css
+  </IfModule>
+  
+  <FilesMatch "\.js$">
+      AddType application/javascript .js
+  </FilesMatch>
+  
