@@ -7,6 +7,4 @@
     RewriteRule . /dist/index.html [L]
   </IfModule>
   
-  # Asegúrate de que los archivos JavaScript sean servidos con el MIME type correcto
-  AddType application/javascript .js
   
