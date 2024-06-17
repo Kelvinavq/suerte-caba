@@ -59,9 +59,11 @@ const ImgHeader_a = () => {
         try {
           const response = await fetch(`${config.api}updateHeaderImage.php`, {
             method: "POST",
+            credentials: "include",
             body: formData,
           });
-
+        
+          
           const result = await response.json();
 
           if (response.ok) {
@@ -85,7 +87,7 @@ const ImgHeader_a = () => {
         } catch (error) {
           console.error("Error updating image:", error);
 
-          MySwal.fire({
+          Swal.fire({
             title: "Error",
             text: "Hubo un error al actualizar la imagen.",
             icon: "error",

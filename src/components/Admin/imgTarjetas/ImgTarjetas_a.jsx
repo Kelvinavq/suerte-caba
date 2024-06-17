@@ -76,6 +76,7 @@ const ImgTarjetas_a = () => {
         try {
           const response = await fetch(`${config.api}updateTarjetaImage.php`, {
             method: "POST",
+            credentials: "include",
             body: formData,
           });
 

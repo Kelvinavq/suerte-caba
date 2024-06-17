@@ -25,6 +25,7 @@
     background: var(--primary);
     padding: 10px 15px;
     border-radius: 15px;
+    color: var(--dark);
 }
 
 .inner_admin_testimonios .tabla td.inactivo span{

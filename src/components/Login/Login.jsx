@@ -9,6 +9,9 @@ import "aos/dist/aos.css";
 
 import ParticlesBg from "particles-bg";
 
+import withReactContent from "sweetalert2-react-content";
+
+const MySwal = withReactContent(Swal);
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -39,7 +42,7 @@ const Login = () => {
       Swal.fire({
         icon: "error",
         title: "Error",
-        text: "La contraseña debe contener al menos 8 carácteres",
+        text: "La contraseña debe contener al menos 8 caracteres",
       });
       return false;
     }
@@ -106,11 +109,129 @@ const Login = () => {
   }, []);
   const particleNum = windowWidth < 560 ? 30 : 80;
 
+  const handleResetPassword = () => {
+    MySwal.fire({
+      title: "Restablecer Contraseña",
+      html: '<input id="reset-email" class="swal2-input" placeholder="Ingrese su correo electrónico">',
+      showCancelButton: true,
+      confirmButtonText: "Enviar Código",
+      preConfirm: () => {
+        const email = Swal.getPopup().querySelector("#reset-email").value;
+        if (!email) {
+          Swal.showValidationMessage("Debe ingresar un correo electrónico");
+        }
+        return { email: email };
+      },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const { email } = result.value;
+        // Enviar solicitud de restablecimiento de contraseña al servidor
+        sendResetPasswordRequest(email);
+      }
+    });
+  };
+
+  const sendResetPasswordRequest = async (email) => {
+    try {
+      const response = await fetch(`${config.api}resetPassword.php`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email: email }),
+      });
+
+      const responseData = await response.json();
+
+      if (response.ok) {
+        Swal.fire({
+          icon: "success",
+          title: "Éxito",
+          text: responseData.message,
+        }).then(() => {
+          handleConfirmResetPassword(email);
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: responseData.error || "Hubo un problema al enviar la solicitud",
+        });
+      }
+    } catch (error) {
+      console.error("Error al enviar solicitud de restablecimiento:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Error inesperado al enviar solicitud de restablecimiento",
+      });
+    }
+  };
+
+  const handleConfirmResetPassword = (email) => {
+    MySwal.fire({
+      title: "Ingresar Código de Verificación",
+      html:
+        '<input id="reset-code" class="swal2-input" placeholder="Ingrese el código recibido">' +
+        '<input id="new-password" type="password" class="swal2-input" placeholder="Ingrese su nueva contraseña">',
+      showCancelButton: true,
+      confirmButtonText: "Confirmar",
+      preConfirm: () => {
+        const code = Swal.getPopup().querySelector("#reset-code").value;
+        const newPassword = Swal.getPopup().querySelector("#new-password").value;
+        if (!code || !newPassword) {
+          Swal.showValidationMessage("Debe ingresar el código y la nueva contraseña");
+        }
+        return { email, code, newPassword };
+      },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const { email, code, newPassword } = result.value;
+        // Enviar solicitud para confirmar el código y actualizar la contraseña
+        confirmResetPassword(email, code, newPassword);
+      }
+    });
+  };
+
+  const confirmResetPassword = async (email, code, newPassword) => {
+    try {
+      const response = await fetch(`${config.api}verifyResetCode.php`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, code, newPassword }),
+      });
+
+      const responseData = await response.json();
+
+      if (response.ok) {
+        Swal.fire({
+          icon: "success",
+          title: "Éxito",
+          text: responseData.message,
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: responseData.error || "Hubo un problema al restablecer la contraseña",
+        });
+      }
+    } catch (error) {
+      console.error("Error al restablecer la contraseña:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Error inesperado al restablecer la contraseña",
+      });
+    }
+  };
 
   return (
     <>
       <div className="container_login">
-      <ParticlesBg
+        <ParticlesBg
           num={particleNum}
           type="cobweb"
           bg={true}
@@ -145,7 +266,7 @@ const Login = () => {
                     <input
                       type="password"
                       id="password"
-                      placeholder="+8 carácteres"
+                      placeholder="+8 caracteres"
                       name="password"
                       value={formData.password}
                       onChange={handleChange}
@@ -160,8 +281,12 @@ const Login = () => {
                 </div>
 
                 <div className="footer">
-                  <span>Olvidaste tu contraseña ? </span>
-                  <button type="submit" className="btn-2">
+                  <span>¿Olvidaste tu contraseña?</span>
+                  <button
+                    type="button"
+                    className="btn-2"
+                    onClick={handleResetPassword}
+                  >
                     Restablecer
                   </button>
                 </div>

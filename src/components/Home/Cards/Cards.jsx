@@ -38,13 +38,13 @@ const Cards = () => {
     fetchCardsImages();
   }, []);
 
-  const handleImageError = (index) => {
-    // Manejar el error de carga de la imagen
-    console.warn(`Error cargando la imagen para tarjeta con index ${index}`);
-    // Actualizar el estado de tarjetas para mostrar la imagen alternativa
-    const updatedTarjetas = [...tarjetas];
-    updatedTarjetas[index].image = logo;
-    setTarjetas(updatedTarjetas);
+
+  const openInstagramSuerteCaba = () => {
+    window.open("https://www.instagram.com/suertecaba_arg/", "_blank");
+  };
+
+  const openWhatsappSuerteCaba = () => {
+    window.open("https://wa.link/5t1rta", "_blank");
   };
 
   return (
@@ -64,7 +64,12 @@ const Cards = () => {
             </div>
 
             <div className="right">
-              <button className="btn" data-aos="fade-up" data-aos-delay="600">
+              <button
+                className="btn"
+                data-aos="fade-up"
+                data-aos-delay="600"
+                onClick={openInstagramSuerteCaba}
+              >
                 Descubrí
                 <ArrowRightAltIcon />
               </button>
@@ -78,7 +83,6 @@ const Cards = () => {
                   <img
                     src={`${config.public_images}${tarjeta.image}`}
                     alt={`Tarjeta ${tarjeta.id}`}
-                    onError={() => handleImageError(index)}
                   />
                 </div>
 

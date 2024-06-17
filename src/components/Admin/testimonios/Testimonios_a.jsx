@@ -99,6 +99,7 @@ const Testimonios_a = () => {
           `${config.api}updateTestimonialStatus.php`,
           {
             method: "POST",
+            credentials: "include",
             headers: {
               "Content-Type": "application/json",
             },

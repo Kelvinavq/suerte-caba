@@ -1,6 +1,4 @@
 <?php
-require "../vendor/autoload.php";
-
 include '../config/cors.php';
 include("../config/config.php");
 

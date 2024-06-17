@@ -17,7 +17,6 @@ const Ajustes_a = () => {
           credentials: "include", // Incluye las cookies en la solicitud
           headers: {
             "Content-Type": "application/json",
-            // Puedes agregar más headers si es necesario
           },
         });
         if (response.ok) {
@@ -39,14 +38,14 @@ const Ajustes_a = () => {
     event.preventDefault();
 
     if (email.trim() === "") {
-      MySwal.fire({
+     Swal.fire({
         icon: "warning",
         title: "Email inválido",
         text: "Por favor ingresa un correo electrónico válido.",
       });
       return;
     }
-    
+
     // Validar que el password tenga al menos 8 caracteres si se proporciona
     if (password.length > 0 && password.length < 8) {
       Swal.fire({
@@ -64,6 +63,7 @@ const Ajustes_a = () => {
 
     try {
       const response = await fetch(`${config.api}updateUserData.php`, {
+        credentials: "include",
         method: "POST",
         body: formData,
       });
@@ -73,9 +73,9 @@ const Ajustes_a = () => {
           icon: "success",
           title: "¡Datos actualizados!",
           text: "Los datos del usuario se han actualizado correctamente.",
-          didClose: () =>{
+          didClose: () => {
             window.location.reload();
-          }
+          },
         });
       } else {
         throw new Error("Error al actualizar los datos del usuario.");

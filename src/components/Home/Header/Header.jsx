@@ -71,6 +71,14 @@ const Header = () => {
     };
   }, [isSidebarOpen]);
 
+  const openInstagramSuerteCaba = () => {
+    window.open("https://www.instagram.com/suertecaba_arg/", "_blank");
+  };
+  
+  const openWhatsappSuerteCaba = () => {
+    window.open("https://wa.link/5t1rta", "_blank");
+  };
+
   return (
     <>
       <div className="header_container" id="inicio">
@@ -112,7 +120,7 @@ const Header = () => {
             </nav>
 
             <div className="button">
-              <button className="btn">Contacto</button>
+              <button className="btn" onClick={openWhatsappSuerteCaba}>Contacto</button>
 
               <button className="btnSidebar" onClick={toggleSidebar}>
                 <MenuOpenIcon />
@@ -135,9 +143,9 @@ const Header = () => {
               </p>
 
               <div className="buttons" data-aos="fade-up" data-aos-delay="500">
-                <button className="btn">Jugar Ahora</button>
+                <button className="btn" onClick={openWhatsappSuerteCaba}>Jugar Ahora</button>
 
-                <button className="btn-2">Jugar Ahora</button>
+                <button className="btn-2" onClick={openInstagramSuerteCaba}>Seguinos!</button>
               </div>
             </div>
             <div className="right">

@@ -59,6 +59,7 @@ const ImgBanner_a = () => {
     try {
       const response = await fetch(`${config.api}uploadBannerImages.php`, {
         method: "POST",
+        credentials: "include",
         body: formData,
       });
 
@@ -103,6 +104,7 @@ const ImgBanner_a = () => {
           const response = await fetch(
             `${config.api}deleteBannerImage.php?image=${image.image}&id=${image.id}`,
             {
+              credentials: "include",
               method: "get",
             }
           );

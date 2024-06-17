@@ -1,9 +1,10 @@
 .container_testimonial {
   width: 100%;
   margin-top: 80px;
-  margin-bottom: 100px;
+  /* margin-bottom: 100px; */
   padding: 150px 0;
   position: relative;
+  background: var(--dark-2);
 }
 
 .container_testimonial .title {
@@ -133,9 +134,9 @@
   margin-top: 60px;
 }
 
-@media (max-width: 620px) {
+@media (max-width: 720px) {
   .testimonials .slick-track {
-    gap: 50px;
+    gap: 10px;
   }
 
   .testimonials .slide_testimonial {

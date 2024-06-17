@@ -5,6 +5,7 @@ import Cards from "../components/Home/Cards/Cards";
 import Banner from "../components/Home/Banner/Banner";
 import Testimonial from "../components/Home/Testimonial/Testimonial";
 import LineasConfianza from "../components/Home/LineasConfianza/LineasConfianza";
+import Footer from "../components/Home/Footer/Footer";
 
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 
@@ -41,6 +42,7 @@ const Home = () => {
       <Banner />
       <LineasConfianza />
       <Testimonial />
+      <Footer />
 
       {showBackToTop && (
         <button className="back-to-top" onClick={scrollToTop}>

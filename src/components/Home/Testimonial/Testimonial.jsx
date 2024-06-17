@@ -172,12 +172,12 @@ const Testimonial = () => {
   return (
     <>
       <div className="container_testimonial" id="clientes">
-        <ParticlesBg
+        {/* <ParticlesBg
           num={particleNum}
           type="cobweb"
           bg={true}
           color="#fbe903"
-        />
+        /> */}
         <div className="title">
           <div className="button">
             <button className="btn-2" data-aos="fade-up" data-aos-delay="200">

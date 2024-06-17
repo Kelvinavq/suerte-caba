@@ -1,10 +1,6 @@
 <?php
-require "../vendor/autoload.php";
-
-use Intervention\Image\ImageManagerStatic as Image;
-
 include '../config/cors.php';
-include("../config/config.php");
+include "../config/config.php";
 
 $conexion = obtenerConexion();
 
@@ -33,36 +29,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $uploadFileDir = '../public/banners/';
                     $dest_path = $uploadFileDir . $newFileName;
 
-                    // Crear la instancia de Intervention Image
-                    $image = Image::make($fileTmpPath);
+                    // Mover el archivo subido al directorio de banners
+                    if (move_uploaded_file($fileTmpPath, $dest_path)) {
+                        // Guardar el nombre del archivo en la base de datos
+                        $query = "INSERT INTO banner (image) VALUES (:image)";
+                        $stmt = $conexion->prepare($query);
+                        $stmt->bindValue(':image', $newFileName);
+                        $stmt->execute();
 
-                    // Comprimir la imagen según su tipo
-                    switch ($fileExtension) {
-                        case 'jpg':
-                        case 'jpeg':
-                            $image->save($dest_path, 75); // 75% de calidad para jpg/jpeg
-                            break;
-                        case 'png':
-                            $image->save($dest_path, 9); // Nivel de compresión 9 para png (0-9)
-                            break;
-                        case 'webp':
-                            $image->save($dest_path, 75); // 75% de calidad para webp
-                            break;
-                        case 'svg':
-                            move_uploaded_file($fileTmpPath, $dest_path); // SVG no necesita compresión
-                            break;
-                        default:
-                            move_uploaded_file($fileTmpPath, $dest_path); // Mover por defecto si no coincide
+                        // Agregar el nombre del archivo subido al array de imágenes subidas
+                        $uploadedImages[] = $newFileName;
+                    } else {
+                        // Agregar el error al array de errores si falla el movimiento del archivo
+                        $errors[] = "Error al mover el archivo al servidor: " . $fileName;
                     }
-
-                    // Guardar el nombre del archivo en la base de datos
-                    $query = "INSERT INTO banner (image) VALUES (:image)";
-                    $stmt = $conexion->prepare($query);
-                    $stmt->bindValue(':image', $newFileName);
-                    $stmt->execute();
-
-                    // Agregar el nombre del archivo subido al array de imágenes subidas
-                    $uploadedImages[] = $newFileName;
                 } else {
                     // Agregar el error de extensión no permitida al array de errores
                     $errors[] = "Extensión de archivo no permitida para el archivo: " . $fileName;
