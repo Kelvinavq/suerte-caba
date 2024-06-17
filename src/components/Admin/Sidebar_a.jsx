@@ -46,11 +46,11 @@ const Sidebar_a = () => {
         mode: "cors",
         credentials: "include",
       });
-  
+
       if (response.ok) {
         // Elimina la información de la sesión del almacenamiento local
         sessionStorage.removeItem("user_id");
-  
+
         // Redirige al usuario a la página de inicio de sesión
         window.location.href = "/login";
       } else {
@@ -81,6 +81,18 @@ const Sidebar_a = () => {
             </li>
             <li
               onClick={toggleSidebar}
+              className={`item ${isActive("/admin/recomendados")}`}
+            >
+              <a href="/admin/recomendados">Recomendados</a>
+            </li>
+            <li
+              onClick={toggleSidebar}
+              className={`item ${isActive("/admin/premios")}`}
+            >
+              <a href="/admin/premios">Premios</a>
+            </li>
+            <li
+              onClick={toggleSidebar}
               className={`item ${isActive("/admin/banner")}`}
             >
               <a href="/admin/banner">Banner</a>
@@ -97,10 +109,8 @@ const Sidebar_a = () => {
             >
               <a href="/admin/ajustes">Ajustes</a>
             </li>
-            <li
-              onClick={handleLogout}
-              className={`item`}
-            >
+
+            <li onClick={handleLogout} className={`item`}>
               <a href="#">Cerrar sesión</a>
             </li>
           </ul>

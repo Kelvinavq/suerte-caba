@@ -33,6 +33,10 @@ const LineasConfianza = () => {
     window.open("http://wa.link/luxurycaba1", "_blank");
   };
 
+  const openInstagramLuxury = () => {
+    window.open("https://www.instagram.com/_luxurycaba?igsh=Njg0czF1ZXdlODJp", "_blank");
+  };
+
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -92,6 +96,9 @@ const LineasConfianza = () => {
                 <h2 className="card__title">LUXURY CABA</h2>
 
                 <div className="buttons">
+                  <button className="btn" onClick={openInstagramLuxury}>
+                    <InstagramIcon />
+                  </button>
                   <button className="btn" onClick={openWhatsappLuxury}>
                     <WhatsAppIcon />
                   </button>

@@ -76,7 +76,7 @@ const Header = () => {
   };
   
   const openWhatsappSuerteCaba = () => {
-    window.open("https://wa.link/5t1rta", "_blank");
+    window.open("https://wa.link/suertecaba", "_blank");
   };
 
   return (

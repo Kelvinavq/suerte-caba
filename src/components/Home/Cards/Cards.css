@@ -63,15 +63,15 @@
   border-radius: 30px;
   overflow: hidden;
   overflow-y: auto;
-  transition: all .3s;
+  transition: all 0.3s;
   transform: scale(1);
   cursor: pointer;
-  box-shadow: 0px -34px 62px -52px rgba(247,255,0,1);
+  box-shadow: 0px -34px 62px -52px rgba(247, 255, 0, 1);
 }
 
-.cards .cards_grid .card:hover{
-    transform: scale(1.1);
-    box-shadow: var(--shadow);
+.cards .cards_grid .card:hover {
+  transform: scale(1.1);
+  box-shadow: var(--shadow);
 }
 
 .cards .cards_grid .card::-webkit-scrollbar {
@@ -121,7 +121,7 @@
 .cards .cards_grid .card:first-child .title .icon {
   background: var(--primary);
 }
-.cards .cards_grid .card:first-child .title .icon svg{
+.cards .cards_grid .card:first-child .title .icon svg {
   color: var(--dark);
 }
 .cards .cards_grid .card:nth-child(2) .title .icon {
@@ -130,7 +130,7 @@
 .cards .cards_grid .card:last-child .title .icon {
   background: var(--primary);
 }
-.cards .cards_grid .card:last-child .title .icon svg{
+.cards .cards_grid .card:last-child .title .icon svg {
   color: var(--dark);
 }
 
@@ -161,26 +161,22 @@
   .cards_container .cards {
     width: 85%;
   }
-  
 }
 
 @media (max-width: 1320px) {
   .cards .cards_grid {
     justify-content: space-around;
   }
-  
 }
 
 @media (max-width: 1100px) {
   .cards_container .cards {
     width: 95%;
   }
-  
 }
 
-
 @media (max-width: 800px) {
-  .cards .head_cards{
+  .cards .head_cards {
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -188,7 +184,37 @@
     text-align: center;
   }
 
-  .cards .cards_grid{
+  .cards .cards_grid {
     justify-content: center;
   }
+}
+
+.modal.cards .slide {
+  width: 100%;
+  height: auto;
+  max-height: 550px;
+}
+
+.modal.cards .slide img {
+  max-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+}
+
+.modal.cards .content-modal {
+  margin-top: 50px;
+  height: calc(100% - 50px);
+}
+
+
+.modal.cards .slick-track{
+  display: flex;
+  gap: 10px;
+}
+
+@media (max-width: 920px) {
+ 
+.modal.cards .slick-track{
+  gap: 0;
+} 
 }

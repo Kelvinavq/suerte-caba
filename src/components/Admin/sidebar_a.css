@@ -50,12 +50,13 @@
   display: none;
 }
 
-@media (max-width: 620px) {
+@media (max-width: 1100px) {
   .sidebar_admin .button {
     width: 100%;
     display: flex;
     justify-content: end;
     padding: 20px 0;
+    margin-right: 20px;
   }
   .sidebar_admin button {
     display: block;
@@ -85,7 +86,6 @@
     box-shadow: var(--shadow);
 
     display: flex;
-    align-items: center;
   }
 
   body.openSidebar .sidebar_admin nav {

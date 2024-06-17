@@ -527,6 +527,12 @@ tr:nth-child(4n + 4) td.name .circle {
   overflow: hidden;
 }
 
+.modal-overlay .modal.cards {
+  width: 920px;
+  height: auto;
+  max-height: 90vh;
+}
+
 .modal-overlay .modal .close-modal {
   position: absolute;
   top: 20px;
@@ -587,7 +593,6 @@ tr:nth-child(4n + 4) td.name .circle {
 .modal .content-modal .input input,
 .modal .content-modal .input textarea {
   width: calc(100% - 0px);
-
 }
 
 .modal .content-modal .input input .modal .content-modal .input select {
@@ -646,7 +651,7 @@ tr:nth-child(4n + 4) td.name .circle {
   max-width: 300px;
 }
 
-.input.rating{
+.input.rating {
   display: flex;
   justify-content: start;
 }
@@ -675,8 +680,6 @@ tr:nth-child(4n + 4) td.name .circle {
   transition: color 0.3s;
 }
 
-
-
 .back-to-top {
   position: fixed;
   bottom: 20px;
@@ -693,7 +696,7 @@ tr:nth-child(4n + 4) td.name .circle {
   align-items: center;
   font-size: 20px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  transition: all .3s;
+  transition: all 0.3s;
 }
 
 .back-to-top:hover {

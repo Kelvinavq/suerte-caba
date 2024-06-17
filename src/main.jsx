@@ -13,6 +13,8 @@ import ImgTarjetas from "./pages/Admin/imgTarjetas";
 import ImgBanner from "./pages/Admin/ImgBanner";
 import Testimonios from "./pages/Admin/Testimonios";
 import Ajustes from "./pages/Admin/Ajustes";
+import ImgRecomendados from "./pages/Admin/ImgRecomendados"
+import ImgPremios from "./pages/Admin/ImgPremios";
 
 const router = createBrowserRouter([
   // publics
@@ -44,6 +46,14 @@ const router = createBrowserRouter([
   {
     path: "/admin/ajustes",
     element: <Ajustes />,
+  },
+  {
+    path: "/admin/recomendados",
+    element: <ImgRecomendados />,
+  },
+  {
+    path: "/admin/premios",
+    element: <ImgPremios />,
   },
 ]);
 
